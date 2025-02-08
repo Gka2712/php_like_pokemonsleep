@@ -14,8 +14,8 @@
         <p>睡眠スコア:{{$sleepscore}}点</p>
         <p>睡眠パワー:{{$sleeppower}}</p>
         <p>獲得したポケモン</p>
-        @for ($i=0;$i < count($collects);$i++ )
-            {{$collects[$i]}}.
+        @for ($i=0;$i < count($collectnums);$i++ )
+            {{$collectnums[$i]}}番目のポケモン「{{$collectpokemon[$i]}}」<br>
         @endfor
         <button class="btn btn-primary" onclick="location.href='/main'">戻る</button> 
     </body>

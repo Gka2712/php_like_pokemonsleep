@@ -6,6 +6,8 @@ use App\Models\Pokemon;
 use App\Models\Cavigon;
 use App\Models\Nut;
 use App\Models\Rank;
+use App\Models\Sleep;
+use App\Models\Cpokemon;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -73,6 +75,7 @@ class MainController extends Controller
         $rnut=Nut::find(1);
         $rnut->num=0;
         $rnut->limitnum=80;
+        Sleep::query()->delete();
         for($i=0;$i<5;$i++){
             $rpokemon=Pokemon::find($i+1);
             $rpokemon->lasttime=NULL;
@@ -88,5 +91,13 @@ class MainController extends Controller
         $cquantity->limitnum+=5;
         $cquantity->save();
         return redirect(route('pokemonsleep.main'));
+    }
+    public function pokemonphoto(){
+        $cpokemons=Cpokemon::all();
+        return view('pokemonphoto',['cpokemons'=>$cpokemons]);
+    }
+    public function pokemondetail($id){
+        $cpokemon=Cpokemon::find($id);
+        return view('pokemondetail',['cpokemon'=>$cpokemon]);
     }
 }

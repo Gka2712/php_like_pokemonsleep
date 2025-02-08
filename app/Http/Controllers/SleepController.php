@@ -34,7 +34,8 @@ class SleepController extends Controller
         $newsleep= new Sleep;
         $newspower= new Spower;
         $cpokemon= Cpokemon::all();
-        $collect=[];
+        $collectnum=[];
+        $collectpokemon=[];
         $newsleep->day=request('day');
         $newsleep->sleeptime=request('sleeptime');
         $newsleep->getuptime=request('getuptime');
@@ -49,9 +50,13 @@ class SleepController extends Controller
         $newspower->save();
         for($i=0;$i<5;$i++){
             $randnum=mt_rand(1,Cpokemon::count());
-            array_push($collect,$randnum);
+            array_push($collectnum,$randnum);
+            $selectpokemon=Cpokemon::find($randnum);
+            $selectpokemon->collect=1;
+            $selectpokemon->save();
+            array_push($collectpokemon,$selectpokemon->pokemonname);
         }
-        return view('sleepstore',['newsleep'=>$newsleep,'timediff'=>$time_diff,'sleepscore'=>$sleepscore,'sleeppower'=>$sleeppower,'collects'=>$collect]);
+        return view('sleepstore',['newsleep'=>$newsleep,'timediff'=>$time_diff,'sleepscore'=>$sleepscore,'sleeppower'=>$sleeppower,'collectnums'=>$collectnum,'collectpokemon'=>$collectpokemon]);
     }
 
     /**

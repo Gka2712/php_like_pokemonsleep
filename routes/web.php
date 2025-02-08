@@ -12,3 +12,5 @@ Route::get('/cquan',[MainController::class,'cookquantity'])->name('pokemonsleep.
 Route::get('/sleep/create',[SleepController::class,'create'])->name('newsleep.create');
 Route::post('/sleep/store',[SleepController::class,'store'])->name('newsleep.store');
 Route::get('/cooking',[NutController::class,'index'])->name('nut.index');
+Route::get('/pokemonphoto',[MainController::class,'pokemonphoto'])->name('main.photo');
+Route::get('/pokemonphoto/{id}',[MainController::class,'pokemondetail'])->name('main.detail');

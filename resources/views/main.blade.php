@@ -32,5 +32,7 @@
         <button class="btn btn-primary" onclick="location.href='/cooking'">食事する</button>
         <button class="btn btn-primary" onclick="location.href='/cquan'">材料の容量を増やす</button>
         <button class="btn btn-primary" onclick="location.href='/reset'">リセットする</button>
+
+        <button class="btn btn-primary" onclick="location.href='/pokemonphoto'">ポケモンの寝顔</button>
     </body>
 </html>
